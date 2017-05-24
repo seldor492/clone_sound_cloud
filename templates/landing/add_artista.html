@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="mdl-grid demo-content">
+          <form action="{% url 'landing:add_artista' %}" method="post">
+            {% csrf_token %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_nombre" class="mdl-textfield__label">Nombre</label>
+              {{form.nombre}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_nacionalidad" class="mdl-textfield__label">Nacionalidad</label>
+              {{form.nacionalidad}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_acerca_de" class="mdl-textfield__label">Acerca de</label>
+              {{form.acerca_de}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_tipo_artista" class="mdl-textfield__label">Tipo de artista</label>
+              {{form.tipo_artista}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_genero" class="mdl-textfield__label">Género</label>
+              {{form.genero}}
+            </div>
+            <br>
+            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" value="Registrar">
+          </form>
+        </div>
+{% endblock %}

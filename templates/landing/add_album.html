@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="mdl-grid demo-content">
+          <form action="{% url 'landing:add_album' %}" method="post">
+            {% csrf_token %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_nombre" class="mdl-textfield__label">Nombre</label>
+              {{form.nombre}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_anio" class="mdl-textfield__label">Año</label>
+              {{form.anio}}
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_artista" class="mdl-textfield__label">Artista</label>
+              <select class="mdl-textfield__input" name="artista" id="input_artista">
+                {% for artista in artistas %}
+                  <option value="{{artista.id}}">{{artista.nombre}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="input_genero" class="mdl-textfield__label">Género</label>
+              {{form.genero}}
+            </div>
+            <br>
+            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" value="Registrar">
+          </form>
+        </div>
+{% endblock %}

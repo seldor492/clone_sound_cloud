@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block search %}
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <form action="{% url 'landing:canciones' %}" method="POST">
+              {% csrf_token %}
+              
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                  <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" name="q" id="search">
+                  <label class="mdl-textfield__label" for="search">Enter your search...</label>
+                </div>
+              
+            </form>
+</div>
+{% endblock%}
+{% block content %}
+        <div class="mdl-grid demo-content">
+          
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-cell--12-col-desktop">
+            {% for cancion in canciones %}
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300 mdl-grid center-items">
+                <i class="material-icons" style="font-size: 180px">audiotrack</i><br>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                <h1 class="mdl-card__title-text">{{cancion.nombre}}</h1>
+                {{cancion.anio}}
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <audio controls>
+                  <source src="/media/{{cancion.url_cancion}}" type="audio/mpeg">
+                Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          
+        </div>
+{% endblock %}
+
+{% block add %}
+  <a href="{% url 'landing:add_cancion' %}" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast"> <i class="material-icons">add</i> Add Songs</a>
+{% endblock %}

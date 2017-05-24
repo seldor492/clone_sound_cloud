@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CSC - CSCloud</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'landing/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'landing/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'landing/css/grayscale.min.css' %}" rel="stylesheet">
+    <style>
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> CSCloud
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">CSCloud API</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#signin">Sign in</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#signup">Sign up</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">CSCloud</h1>
+                        <p class="intro-text">A web site to free your musical sense.
+                            <br>Created by the best Dev.f team.</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About CSCloud</h2>
+                <p>You can sign up and enjoy listening to music for free.</p>
+                <p>Upload and share your own music.</p>
+                <p>Show us the artist who you are and upload your independent music.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>CSCloud API</h2>
+                    <p>You can use our API and share. Please, see the <a href="">documentation</a> and keep listening to music.</p>
+                    <a href="{% url 'docs'  %}" target="_blank" class="btn btn-default btn-lg">API Documentation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signin" class="content-section text-center">
+        <div class="signin-section">
+            <div class="container">
+                <form action="{% url 'landing:artistas' %}" method="get">
+                {% csrf_token %}
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Sign in</h2>
+                    <p>Welcome to CSCloud.</p>
+                    <div class="form-group">
+                        <label for="usr">Email:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <a href="{% url 'landing:artistas' %}" class="btn btn-default btn-lg">Sign in</a>
+                    <!--<input type="submit" class="btn btn-default btn-lg" value="Sign in"><br /><br />-->
+                    <a href="#signup">Or signup here!</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="content-section text-center">
+        <div class="signin-section">
+            <div class="container">
+                <form action="{% url 'landing:artistas' %}" method="get">
+                {% csrf_token %}
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Sign up</h2>
+                    <p>Thanks for joining us to CSCloud.</p>
+                    <div class="form-group">
+                        <label for="usr">Email:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Confirm password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <!--<input type="submit" class="btn btn-default btn-lg" value="Sign up"><br /><br />-->
+                    <a href="{% url 'landing:artistas' %}" class="btn btn-default btn-lg">Sign up</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact CSCloud</h2>
+                <p>Feel free to email us to provide some feedback on our work, or to just say hello!</p>
+                <p><a href="mailto:feedback@startbootstrap.com">feedback@cscloud.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/jonatan-castaneda/csoundcloud" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    
+        <div id="map">
+            <div class="row">
+                <div class="col-lg-12 text-center" >
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7525.730442939304!2d-99.16219654048025!3d19.418228506870957!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdabaf4e144a4e7af!2sImpact+Hub!5e0!3m2!1ses-419!2smx!4v1494703883024" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; CSCloud 2017</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'landing/vendor/jquery/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'landing/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>-->
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'landing/js/grayscale.min.js' %}"></script>
+
+</body>
+
+</html>

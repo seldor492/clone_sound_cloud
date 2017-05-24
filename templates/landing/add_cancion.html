@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="mdl-grid demo-content">
+          <form action="{% url 'landing:add_cancion' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="nombre" class="mdl-textfield__label">Nombre</label>
+                    <input type="text" class="mdl-textfield__input" name="nombre" id="nombre">
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="anio" class="mdl-textfield__label">Año</label>
+                <input type="text" name="anio" id="anio" class="mdl-textfield__input">
+            </div>
+            <br>
+            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label ">
+              <label for="genero" class="mdl-selectfield__label">Genero</label>
+              <select name="genero" class="mdl-textfield__input">
+                  {% for key,value in generos.items %}
+                    <option value="{{key}}">{{value}}</option>
+                  {% endfor %}
+              </select>
+              
+            </div>
+            <br>
+            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label ">
+              <label for="album" class="mdl-selectfield__label">Album</label>
+              <select name="album" class="mdl-textfield__input">
+                  {% for album in albums %}  
+                    <option value="{{album.id}}">{{album.nombre}}</option>
+                  {% endfor %}  
+              </select>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="rating" class="mdl-textfield__label">Rating</label>
+                <input type="number" name="rating" id="rating" class="mdl-textfield__input">
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+              <label for="url_cancion" class="mdl-textfield__label">Cancion</label>
+                <input type="file" name="url_cancion" id="url_cancion" class="mdl-textfield__input">
+            </div>
+            <br>
+            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" value="Registrar">
+          </form>
+        </div>
+{% endblock %}
